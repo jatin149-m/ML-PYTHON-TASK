@@ -1,0 +1,92 @@
+TASK 2 OUTPUT WITH SOURCE CODE
+user_preference = "Italian"
+df_filtered = df[df['Restaurant Name'].str.contains(user_preference, case=False)]
+print(df_filtered.head())
+OUTPUT
+ Restaurant ID                          Restaurant Name  Country Code  \
+110       17293186        DePalma's Italian Cafe - Downtown           216   
+111       17293180       DePalma's Italian Cafe - East Side           216   
+131       17294441  Giuseppe's Pizza & Italian Specialities           216   
+158       17305123              Lucianos Italian Restaurant           216   
+166       17315883             Biaggi's Ristorante Italiano           216   
+
+                       City                                    Address  \
+110                  Athens           401 E Broad St, Athens, GA 30601   
+111                  Athens   1965 Barnett Shoals Rd, Athens, GA 30605   
+131                 Augusta         3690 Wheeler Rd, Augusta, GA 30909   
+158                   Boise           11 N Orchard St, Boise, ID 83706   
+166  Cedar Rapids/Iowa City  320 Collins Rd NE, Cedar Rapids, IA 52402   
+
+         Locality                      Locality Verbose   Longitude  \
+110        Athens                        Athens, Athens  -83.373596   
+111        Athens                        Athens, Athens  -83.339950   
+131       Augusta                      Augusta, Augusta  -82.096000   
+158         Boise                          Boise, Boise -116.245165   
+166  Cedar Rapids  Cedar Rapids, Cedar Rapids/Iowa City  -91.632700   
+
+      Latitude  Cuisines  ...   Currency Has Table booking  \
+110  33.958112        78  ...  Dollar($)                No   
+111  33.924275        78  ...  Dollar($)                No   
+131  33.482700       778  ...  Dollar($)                No   
+158  43.605138      1108  ...  Dollar($)                No   
+166  42.028100      1098  ...  Dollar($)                No   
+
+    Has Online delivery Is delivering now Switch to order menu Price range  \
+110                  No                No                   No           1   
+111                  No                No                   No           1   
+131                  No                No                   No           1   
+158                  No                No                   No           1   
+166                  No                No                   No           2   
+
+     Aggregate rating  Rating color Rating text Votes  
+110               4.0         Green   Very Good   353  
+111               4.1         Green   Very Good   387  
+131               4.1         Green   Very Good   430  
+158               4.4         Green   Very Good   360  
+166               4.1         Green   Very Good   365  
+ONE MORE OUTPUT
+user_preference = " Indian"
+df_filtered = df[df['Restaurant Name'].str.contains(user_preference, case=False)]
+print(df_filtered.head())
+OUTPUT
+  Restaurant ID                  Restaurant Name  Country Code       City  \
+850        18416632             The Great Indian Pub             1   Dehradun   
+1066       18419654  Sri Meenakshi South Indian Food             1  Faridabad   
+1186       18458335           Tanishk Gourmet Indian             1    Gurgaon   
+1482       18393697                   Chilli Indiana             1    Gurgaon   
+1528         300538   Ammu's South Indian Restaurant             1    Gurgaon   
+
+                                                Address          Locality  \
+850              138/345, Rajpur Road, Jakhan, Dehradun            Jakhan   
+1066                  HUDA Market, Sector 46, Faridabad         Sector 46   
+1186     VPO, Wazirabad, Sector 52, Ardee City, Gurgaon        Ardee City   
+1482  12, Saraswati Kunj, Opposite Park Hospital, Se...  Golf Course Road   
+1528  3, Ground Floor, Vakil Market, Chakkarpur, MG ...           MG Road   
+
+               Locality Verbose  Longitude   Latitude  Cuisines  ...  \
+850            Jakhan, Dehradun  78.068022  30.361281      1306  ...   
+1066       Sector 46, Faridabad  77.299008  28.437571      1699  ...   
+1186        Ardee City, Gurgaon   0.000000   0.000000      1542  ...   
+1482  Golf Course Road, Gurgaon  77.103255  28.439639      1031  ...   
+1528           MG Road, Gurgaon  77.080910  28.473492      1699  ...   
+
+                Currency Has Table booking Has Online delivery  \
+850   Indian Rupees(Rs.)                No                  No   
+1066  Indian Rupees(Rs.)                No                  No   
+1186  Indian Rupees(Rs.)                No                  No   
+1482  Indian Rupees(Rs.)                No                  No   
+1528  Indian Rupees(Rs.)                No                  No   
+
+     Is delivering now Switch to order menu Price range  Aggregate rating  \
+850                 No                   No           3               4.9   
+1066                No                   No           0               0.0   
+1186                No                   No           1               0.0   
+1482                No                   No           1               3.8   
+1528                No                   No           0               2.8   
+
+      Rating color Rating text Votes  
+850     Dark Green   Excellent    50  
+1066         White   Not rated     1  
+1186         White   Not rated     0  
+1482        Yellow        Good    74  
+1528        Orange     Average    45  
