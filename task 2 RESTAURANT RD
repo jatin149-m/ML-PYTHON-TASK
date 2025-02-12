@@ -1,0 +1,36 @@
+import pandas as pd
+import numpy as np
+df = pd.read_csv("/content/Dataset .csv")
+print(df.head())
+print(df.info())
+print(df.describe())
+
+df.fillna(method='ffill', inplace=True)
+
+from sklearn.preprocessing import LabelEncoder
+
+label_enc = LabelEncoder()
+df['Cuisines'] = label_enc.fit_transform(df['Cuisines'])
+df['Price range'] = label_enc.fit_transform(df['Price range'])
+
+
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
+tfidf = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf.fit_transform(df['Restaurant Name'].astype(str))
+similarity_matrix = cosine_similarity(tfidf_matrix)
+def recommend_restaurant(restaurant_name, num_recommendations=5):
+    index = df[df['name'] == restaurant_name].index[0]
+    scores = list(enumerate(similarity_matrix[index]))
+    scores = sorted(scores, key=lambda x: x[1], reverse=True)
+    scores = scores[1:num_recommendations+1]
+    recommended_restaurants = [df.iloc[i[0]]['name'] for i in scores]
+    return recommended_restaurants
+
+user_preference = "Italian"
+df_filtered = df[df['Restaurant Name'].str.contains(user_preference, case=False)]
+print(df_filtered.head())
+
+user_preference = "Sushi"
+df_filtered = df[df['Restaurant Name'].str.contains(user_preference, case=False)]
+print(df_filtered.head())
